@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before install:
+    - docker build -t embevolter/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true embevolter/docker-react npm run test
